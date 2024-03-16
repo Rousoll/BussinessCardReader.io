@@ -13,6 +13,7 @@ app.secret_key = 'RussLoveTheProg'
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 # Ensure the UPLOAD_FOLDER directory exists
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -33,8 +34,9 @@ def extract_contact_info(text):
     
     name_patterns = [
         r'([A-Z][a-z]+)\s([A-Z][a-z]+)',              # First and Last Name Separated by Space   
-    ]
+]
 
+    
     # Iterate through patterns and try to match
     name = ''
     for pattern in name_patterns:
@@ -54,6 +56,8 @@ def extract_contact_info(text):
         website = ''
 
     return {'Name': name, 'Email': email, 'Phone': phone, 'Company': company_name, 'Website': website}
+
+
 
 def process_images(file_paths, languages):
     data = []
@@ -87,24 +91,14 @@ def upload_file():
                 file.save(file_path)
                 file_paths.append(file_path)
         if file_paths:
-            languages = 'eng'  # English and Arabic
+            languages = ['eng']  # English and Arabic
             processed_data = process_images(file_paths, languages)
             df = pd.DataFrame(processed_data)
             output_file = 'contact_info.xlsx'
             df.to_excel(output_file, index=False)
             flash(f"Contact information saved to {output_file}")
-            # Redirect to the result page with processed data
-            return redirect('/result')
+            return render_template('result.html', processed_data=processed_data)
     return render_template('index.html')
-
-# Route for the result page
-@app.route('/result')
-def show_result():
-    # Read the processed data from the Excel file
-    df = pd.read_excel('contact_info.xlsx')
-    # Convert DataFrame to list of dictionaries
-    processed_data = df.to_dict('records')
-    return render_template('result.html', processed_data=processed_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
