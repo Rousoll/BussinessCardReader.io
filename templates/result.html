@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Card Reader - Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Contact Information</title>
     <style>
         /* CSS for centering the table and adding some styling */
         body {
@@ -58,7 +57,9 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Company</th>
                         <th>Website</th>
                     </tr>
@@ -66,7 +67,9 @@
                 <tbody>
                     {% for contact in processed_data %}
                     <tr>
+                        <td>{{ contact.Name }}</td>
                         <td>{{ contact.Email }}</td>
+                        <td>{{ contact.Phone }}</td>
                         <td>{{ contact.Company }}</td>
                         <td>{{ contact.Website }}</td>
                     </tr>
