@@ -13,7 +13,6 @@ app.secret_key = 'RussLoveTheProg'
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 # Ensure the UPLOAD_FOLDER directory exists
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -36,7 +35,6 @@ def extract_contact_info(text):
         r'([A-Z][a-z]+)\s([A-Z][a-z]+)',              # First and Last Name Separated by Space   
 ]
 
-    
     # Iterate through patterns and try to match
     name = ''
     for pattern in name_patterns:
@@ -56,8 +54,6 @@ def extract_contact_info(text):
         website = ''
 
     return {'Name': name, 'Email': email, 'Phone': phone, 'Company': company_name, 'Website': website}
-
-
 
 def process_images(file_paths, languages):
     data = []
@@ -91,7 +87,7 @@ def upload_file():
                 file.save(file_path)
                 file_paths.append(file_path)
         if file_paths:
-            languages = ['eng']  # English and Arabic
+            languages = 'eng'  # English and Arabic
             processed_data = process_images(file_paths, languages)
             df = pd.DataFrame(processed_data)
             output_file = 'contact_info.xlsx'
