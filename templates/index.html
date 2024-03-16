@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <style>
+        /* CSS for centering the form and adding some styling */
+        body {
+            font-family: Cairo, Arial, sans-serif; /* Added Cairo as the first font family */
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff; /* Revert background color to white */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin: 20px 0;
+            display: block;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333; /* Dark button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Images</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="files[]" accept=".jpg, .jpeg, .png" multiple>
+        <button type="submit">Process Images</button>
+    </form>
+</body>
+</html>
