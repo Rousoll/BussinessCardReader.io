@@ -99,8 +99,8 @@ def upload_file():
             df.to_excel(output_file, index=False)
             flash(f"Contact information saved to {output_file}")
             print(processed_data)
-            return render_template('result.html', processed_data=processed_data)
-    return render_template('./index.html')
+            return render_template('./templates/result.html', processed_data=processed_data)
+    return render_template('./templates/index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
