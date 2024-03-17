@@ -8,7 +8,7 @@ import pandas as pd
 import re
 
 # Create Flask application
-app = Flask(__name__, template_folder='./templates')
+app = Flask(__name__, template_folder='./templates/index.html')
 app.secret_key = 'RussLoveTheProg'
 UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
