@@ -74,6 +74,7 @@ def process_images(file_paths, languages):
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
+        # Process uploaded files
         if 'files[]' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -92,6 +93,7 @@ def upload_file():
                 file.save(file_path)
                 file_paths.append(file_path)
         if file_paths:
+            # Process uploaded files
             languages = ['eng']  # English and Arabic
             processed_data = process_images(file_paths, languages)
             df = pd.DataFrame(processed_data)
@@ -99,8 +101,11 @@ def upload_file():
             df.to_excel(output_file, index=False)
             flash(f"Contact information saved to {output_file}")
             print(processed_data)
-            return render_template('./templates/result.html', processed_data=processed_data)
-    return render_template('./templates/index.html')
+            # Render result.html with processed_data
+            return render_template('result.html', processed_data=processed_data)
+    # Render index.html for GET request or when files are not processed
+    return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
