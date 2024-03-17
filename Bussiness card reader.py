@@ -102,9 +102,9 @@ def upload_file():
             flash(f"Contact information saved to {output_file}")
             print(processed_data)
             # Render result.html with processed_data
-            return render_template('result.html', processed_data=processed_data)
+            return render_template('./templates/result.html', processed_data=processed_data)
     # Render index.html for GET request or when files are not processed
-    return render_template('index.html')
+    return render_template('./templates/index.html')
 
 
 if __name__ == '__main__':
