@@ -73,7 +73,7 @@ def process_images(file_paths, languages):
 # Route for the upload page
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    if request.method == 'GET':
+    if request.method == 'POST':
         if 'files[]' not in request.files:
             flash('No file part')
             return redirect(request.url)
