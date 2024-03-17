@@ -67,12 +67,13 @@ def process_images(file_paths, languages):
             extracted_text = perform_ocr(file_path, languages)
             contact_info = extract_contact_info(extracted_text)
             data.append(contact_info)
+            
     return data
 
 # Route for the upload page
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    if request.method == 'POST':
+    if request.method == 'GET':
         if 'files[]' not in request.files:
             flash('No file part')
             return redirect(request.url)
