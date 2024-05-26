@@ -27,7 +27,7 @@ from werkzeug.routing import RequestRedirect
 from werkzeug.routing import RoutingException
 from werkzeug.routing import Rule
 from werkzeug.serving import is_running_from_reloader
-from werkzeug.urls import url_quote
+from werkzeug.urls import *
 from werkzeug.utils import redirect as _wz_redirect
 from werkzeug.wrappers import Response as BaseResponse
 
@@ -1167,7 +1167,7 @@ class Flask(Scaffold):
             if sn_host:
                 host = sn_host
             else:
-                host = "127.0.0.1"
+                host = "0.0.0.0"
 
         if port or port == 0:
             port = int(port)
